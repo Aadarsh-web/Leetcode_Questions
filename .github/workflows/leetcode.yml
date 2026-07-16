@@ -2,6 +2,9 @@ name: LeetCode Sync
 
 on:
   workflow_dispatch:
+  
+permissions: 
+ contents: write
 
 jobs:
   sync:
