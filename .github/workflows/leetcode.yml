@@ -1,10 +1,12 @@
 name: LeetCode Sync
 
 on:
+  schedule:
+    - cron: "0 * * * *"
   workflow_dispatch:
-  
-permissions: 
- contents: write
+
+permissions:
+  contents: write
 
 jobs:
   sync:
@@ -17,6 +19,6 @@ jobs:
       - name: LeetCode Sync
         uses: joshcai/leetcode-sync@v1.7
         with:
-         github-token: ${{ github.token }} 
-         leetcode-csrf-token: ${{ secrets.LEETCODE_CSRF_TOKEN }}
-         leetcode-session: ${{ secrets.LEETCODE_SESSION }}
+          github-token: ${{ github.token }}
+          leetcode-csrf-token: ${{ secrets.LEETCODE_CSRF_TOKEN }}
+          leetcode-session: ${{ secrets.LEETCODE_SESSION }}
