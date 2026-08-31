@@ -2,19 +2,16 @@ class Solution {
 public:
     vector<int> findErrorNums(vector<int>& nums) {
         int n=nums.size();
-        if(n<2) return nums;
-        vector<int> ans;
-        unordered_map<int,int>mpp;
+        int j=1;
         for(int i=0;i<n;i++){
-            mpp[nums[i]]++;
-            //Duplicate Number
-            if(mpp[nums[i]]>1) ans.push_back(nums[i]);
+            while(nums[i]!=i+1 && nums[nums[i]-1]!=nums[i]){
+                swap(nums[i],nums[nums[i]-1]);
+            }
         }
-        //Missing Number
-        for(int i=1;i<=n;i++){
-            auto it=mpp.find(i);
-            if(mpp.find(i)==mpp.end()) ans.push_back(i);
+
+        for(int i=0;i<n;i++){
+            if(nums[i]!=i+1) return{nums[i],i+1};
         }
-        return ans;
+        return {};
     }
 };
